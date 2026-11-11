@@ -12,6 +12,12 @@
     -apple-system, sans-serif;
 }
 
+/* 滚动条槽位稳定：无论页面是否出现滚动条，布局宽度恒定，
+   避免切换页面时导航栏左右跳动（Windows 经典滚动条占位问题） */
+html {
+  scrollbar-gutter: stable;
+}
+
 /* ---------- 页面切换过渡 ---------- */
 @keyframes page-enter {
   from {
