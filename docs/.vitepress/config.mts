@@ -5,15 +5,13 @@ export default defineConfig({
   title: '我的学习空间',     // 站点标题（浏览器标签页显示）
   description: '个人主页 · 学习日记 · 项目记录',
 
-  // 顶部导航栏：以后要加新分区，在这里加一项即可
-  nav: [
-    { text: '首页', link: '/' },
-    { text: '关于我', link: '/about/' },
-    { text: '学习日记', link: '/diary/' },
-    { text: '个人学习项目', link: '/projects/' },
-  ],
-
+  // 顶部导航栏：以后要加新分区，在 themeConfig.nav 里加一项即可
   themeConfig: {
+    nav: [
+      { text: '首页', link: '/' },
+      { text: '学习日记', link: '/diary/' },
+      { text: '个人学习项目', link: '/projects/' },
+    ],
     // 右上角外链（改/删随意）
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Roadside-ph' },

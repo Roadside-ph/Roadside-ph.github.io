@@ -1,28 +1,31 @@
 ---
 layout: home
 hero:
-  name: 我的学习空间
-  text: 一句话介绍自己
-  tagline: SEU 电子信息 · 研三在读 · 这里记录我的学习日记与项目
+  name: Roadside-ph
+  text: SEU 电子信息 · 研三在读<br>状态：emo 中 🥲
+  tagline: 记录学习与项目，构建自己的知识空间
   actions:
     - theme: brand
-      text: 关于我 →
-      link: /about/
-    - theme: alt
-      text: 个人学习项目
+      text: 个人学习项目 →
       link: /projects/
+    - theme: alt
+      text: 学习日记
+      link: /diary/
+    - theme: alt
+      text: GitHub ↗
+      link: https://github.com/Roadside-ph
 
 features:
   - icon: 📓
     title: 学习日记
-    details: 记录学习过程中的笔记、思考与踩坑经验，见证成长轨迹。
+    details: 学习笔记、思考与踩坑记录，见证成长轨迹。
     link: /diary/
   - icon: 🛠️
     title: 个人学习项目
-    details: 个人与课程项目集合，包含技术栈说明与成果展示。
+    details: VLA 机械臂抓取策略、LLM+RAG 门店导购机器人等实践项目。
     link: /projects/
-  - icon: 📄
-    title: 简历
-    details: 教育背景、技能与经历一览（此分区待添加）。
-    link: /about/
+  - icon: 💻
+    title: GitHub
+    details: 开源代码与技术沉淀，欢迎交流。
+    link: https://github.com/Roadside-ph
 ---

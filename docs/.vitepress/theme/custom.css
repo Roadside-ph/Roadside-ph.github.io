@@ -110,45 +110,37 @@ h1, h2, h3, .vp-doc h1, .vp-doc h2, .vp-doc h3 {
 .VPHero .text {
   font-family: "Spectral", "Noto Serif SC", "Times New Roman", serif !important;
 }
+/* 副标题（身份行）：缩小降级为辅助信息 */
+.VPHero .text {
+  font-size: 1.05rem !important;
+  font-weight: 400 !important;
+  color: var(--vp-c-text-2) !important;
+  margin-top: 14px !important;
+  line-height: 1.5;
+}
 .VPHero .name::after {
   content: "";
   display: block;
-  width: 56px;
+  width: 100%;
   height: 3px;
   background: var(--vp-c-brand-1);
   margin-top: 18px;
 }
 
+/* Hero 按钮：圆角胶囊 + 悬停上浮 */
+.VPHero .actions .VPButton {
+  border-radius: 999px;
+  padding: 0 28px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.VPHero .actions .VPButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(26, 54, 93, 0.18);
+}
+
 /* 正文排版微调：行距舒展一点 */
 .vp-doc p, .vp-doc li {
   line-height: 1.85;
-}
-
-/* 关于我页面的照片/信息布局（配合 about 页使用） */
-.about-profile {
-  display: flex;
-  gap: 32px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
-.about-profile .photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--vp-c-divider);
-  flex-shrink: 0;
-}
-.about-profile .info h1 {
-  margin-top: 0;
-  padding-top: 0;
-  border: none;
-}
-.about-profile .info .meta {
-  color: var(--vp-c-text-2);
-  font-size: 0.95rem;
-  margin: 4px 0 12px;
 }
 
 /* 技能标签 */
