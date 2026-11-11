@@ -1,0 +1,201 @@
+/* ============================================
+   极简学术风定制：衬线标题 + 深藏青点缀
+   在 VitePress 默认主题上做微调，保持其
+   搜索/暗色模式/响应式等全部能力
+   ============================================ */
+
+:root {
+  --vp-c-brand-1: #1a365d;   /* 深藏青：链接、强调 */
+  --vp-c-brand-2: #2b6cb0;
+  --vp-c-brand-3: #2c5282;
+  --vp-font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei",
+    -apple-system, sans-serif;
+}
+
+/* ---------- 页面切换过渡 ---------- */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.page-transition-wrap {
+  animation: page-enter 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* ---------- 首页 Hero 入场（依次浮现） ---------- */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.VPHero .name,
+.VPHero .text,
+.VPHero .tagline,
+.VPHero .actions {
+  animation: hero-rise 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.VPHero .text { animation-delay: 0.08s; }
+.VPHero .tagline { animation-delay: 0.16s; }
+.VPHero .actions { animation-delay: 0.24s; }
+
+/* 首页特性卡片：错峰浮现 + 悬停微抬升 */
+@keyframes card-rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.VPHomeFeatures .VPFeature {
+  animation: card-rise 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.VPHomeFeatures .VPFeature:nth-child(1) { animation-delay: 0.30s; }
+.VPHomeFeatures .VPFeature:nth-child(2) { animation-delay: 0.40s; }
+.VPHomeFeatures .VPFeature:nth-child(3) { animation-delay: 0.50s; }
+.VPHomeFeatures .VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(26, 54, 93, 0.10);
+  border-color: var(--vp-c-brand-2);
+}
+
+/* 文章标题左侧出现细线装饰 */
+.vp-doc h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 0.9em;
+  margin-right: 12px;
+  vertical-align: -0.08em;
+  background: linear-gradient(180deg, var(--vp-c-brand-2), var(--vp-c-brand-1));
+  border-radius: 2px;
+}
+
+/* 正文链接：下划线动画 */
+.vp-doc p a,
+.vp-doc li a {
+  text-decoration: none;
+  background-image: linear-gradient(var(--vp-c-brand-2), var(--vp-c-brand-2));
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.25s ease;
+  padding-bottom: 2px;
+}
+.vp-doc p a:hover,
+.vp-doc li a:hover {
+  background-size: 100% 1.5px;
+}
+
+/* 减少动效偏好的用户：关闭所有动画 */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition-wrap,
+  .VPHero .name, .VPHero .text, .VPHero .tagline, .VPHero .actions,
+  .VPHomeFeatures .VPFeature {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 标题：英文 Spectral（数字0带斜杠区分， lining 数字整齐）+
+   中文 Noto Serif SC —— 均为网页字体，中英混排协调 */
+h1, h2, h3, .vp-doc h1, .vp-doc h2, .vp-doc h3 {
+  font-family: "Spectral", "Noto Serif SC", "Times New Roman", serif;
+  letter-spacing: 0.3px;
+}
+
+/* 首页 Hero 区 */
+.VPHero .name,
+.VPHero .text {
+  font-family: "Spectral", "Noto Serif SC", "Times New Roman", serif !important;
+}
+.VPHero .name::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  background: var(--vp-c-brand-1);
+  margin-top: 18px;
+}
+
+/* 正文排版微调：行距舒展一点 */
+.vp-doc p, .vp-doc li {
+  line-height: 1.85;
+}
+
+/* 关于我页面的照片/信息布局（配合 about 页使用） */
+.about-profile {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.about-profile .photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--vp-c-divider);
+  flex-shrink: 0;
+}
+.about-profile .info h1 {
+  margin-top: 0;
+  padding-top: 0;
+  border: none;
+}
+.about-profile .info .meta {
+  color: var(--vp-c-text-2);
+  font-size: 0.95rem;
+  margin: 4px 0 12px;
+}
+
+/* 技能标签 */
+.skill-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  padding: 2px 12px;
+  margin: 0 8px 8px 0;
+  border: 1px solid var(--vp-c-brand-1);
+  border-radius: 999px;
+  color: var(--vp-c-brand-1);
+}
+
+/* Mermaid 图表容器：滚动保护 + 加载中提示 */
+.mermaid-wrapper, .mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  background: var(--vp-c-bg);
+}
+
+/* 时间线（经历用） */
+.timeline {
+  margin: 0;
+  padding-left: 20px;
+}
+.timeline li {
+  list-style: none;
+  position: relative;
+  padding: 0 0 24px 20px;
+  border-left: 2px solid var(--vp-c-divider);
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--vp-c-brand-1);
+}
+.timeline li:last-child {
+  border-left-color: transparent;
+}
+.timeline .date {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+}
